@@ -1,7 +1,7 @@
-import { DemoTooltip } from './demo-tooltip/demo-tooltip';
+import { Scrollr } from './scrollr/scrollr';
 
 if ('customElements' in window) {
-  window.customElements.define('ne14-demo-tooltip', DemoTooltip);
+  window.customElements.define('ne14-scrollr', Scrollr);
 }
 
-export { DemoTooltip };
+export { Scrollr };

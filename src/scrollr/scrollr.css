@@ -1,0 +1,84 @@
+.scrollr {
+  --color: rgba(255, 255, 255, 0.5);
+  --margin: 2px;
+  --min-length: 20px;
+  --radius: 0;
+  --thickness: 3px;
+  --transition-duration: 0.3s;
+  --active-color: #fff;
+  --active-radius: 0;
+  --active-shadow: inset 0px 0 3px rgba(0, 0, 0, 0.6);
+  --active-thickness: 15px;
+  --active-track-color: rgba(255, 255, 255, 0.3);
+}
+
+.scrollr {
+  overflow: hidden;
+  position: relative;
+}
+
+.track {
+  position: absolute;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color var(--transition-duration);
+  user-select: none;
+}
+
+.track.x {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--active-thickness);
+}
+
+.track.y {
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: var(--active-thickness);
+}
+
+.bar {
+  position: absolute;
+  transition: all var(--transition-duration);
+  transition-property: background-color, width, height, bottom, right;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color);
+  border-radius: var(--radius);
+}
+
+.track.x .bar {
+  min-width: var(--min-length);
+  height: var(--thickness);
+  bottom: var(--margin);
+}
+
+.track.y .bar {
+  min-height: var(--min-length);
+  width: var(--thickness);
+  right: var(--margin);
+}
+
+.track.active {
+  background-color: var(--active-track-color);
+  z-index: 1;
+}
+
+.track.active .bar {
+  background-color: var(--active-color);
+  border-radius: var(--active-radius);
+  box-shadow: var(--active-shadow);
+}
+
+.track.x.active .bar {
+  height: var(--active-thickness);
+  bottom: 0;
+}
+
+.track.y.active .bar {
+  width: var(--active-thickness);
+  right: 0;
+}

@@ -1,11 +1,11 @@
 {
-  "name": "@ne1410s/demo",
-  "version": "0.0.3",
-  "description": "A custom element for demonstration purposes and to serve as a project template.",
-  "main": "dist/ne14_demo.cjs.min.js",
-  "module": "dist/ne14_demo.esm.min.js",
-  "browser": "dist/ne14_demo.umd.min.js",
-  "displayName": "ne_demo",
+  "name": "@ne1410s/scrollr",
+  "version": "0.0.0",
+  "description": "A scroll viewer.",
+  "main": "dist/ne14_scrollr.cjs.min.js",
+  "module": "dist/ne14_scrollr.esm.min.js",
+  "browser": "dist/ne14_scrollr.umd.min.js",
+  "displayName": "ne_scrollr",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ne1410s/elem.demo.git"
+    "url": "git+https://github.com/ne1410s/elem.scrollr.git"
   },
   "keywords": [
     "ES",
@@ -34,9 +34,9 @@
   "author": "ne1410s <pgj646@gmail.com> (http://ne1410s.co.uk)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ne1410s/elem.demo/issues"
+    "url": "https://github.com/ne1410s/elem.scrollr/issues"
   },
-  "homepage": "https://github.com/ne1410s/elem.demo#readme",
+  "homepage": "https://github.com/ne1410s/elem.scrollr#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-json": "^4.1.0",
