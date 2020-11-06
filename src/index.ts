@@ -5,3 +5,4 @@ if ('customElements' in window) {
 }
 
 export { Scrollr };
+export * from './scrollr/scrollr-static';
