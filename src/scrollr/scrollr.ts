@@ -64,8 +64,8 @@ export class Scrollr extends CustomElementBase {
   }
 
   private track_mouseup(e: Event, scrollr: Element, axis: 'x' | 'y') {
-    const retainActive = this._scroll == null
-       || (this._scroll.axis == axis && this._scroll.ref == scrollr);
+    const retainActive =
+      this._scroll == null || (this._scroll.axis == axis && this._scroll.ref == scrollr);
     this._scroll = null;
     if (retainActive) {
       e.stopImmediatePropagation();
@@ -88,9 +88,9 @@ export class Scrollr extends CustomElementBase {
     const sPropName = this.axisPropName(axis, 'scroll', 'LT');
     const p0 = scrollr[sPropName];
     const unit = mOffset <= bOffset ? 30 - trackSize : trackSize - 30;
-    const rawx = (getComputedStyle(e.target as Element).transitionDuration);
+    const rawx = getComputedStyle(e.target as Element).transitionDuration;
     const duration = (parseFloat(rawx.replace('s', '')) ?? 0.3) * 1000;
-    this._timer = timer(p => scrollr[sPropName] = p0 + (p * unit), duration, .5);
+    this._timer = timer((p) => (scrollr[sPropName] = p0 + p * unit), duration, 0.5);
   }
 
   private scrollr_scroll(scrollr: Element, trackX: HTMLElement, trackY: HTMLElement): void {

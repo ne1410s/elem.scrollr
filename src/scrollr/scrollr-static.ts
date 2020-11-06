@@ -9,11 +9,11 @@ export function apply(q: string | Element, className: string): void {
 }
 
 export function timer(
-    callback: (prog: number) => void,
-    duration: number = 300,
-    exponent: number = 1,
-    frequency: number = 10): NodeJS.Timeout {
-
+  callback: (prog: number) => void,
+  duration: number = 300,
+  exponent: number = 1,
+  frequency: number = 10
+): NodeJS.Timeout {
   callback(0);
   const t0 = new Date().getTime();
   let elapse, linear;
@@ -26,4 +26,4 @@ export function timer(
   }, frequency);
 
   return interval;
-};
+}

@@ -13,7 +13,7 @@
   cursor: var(--track-cursor);
   overflow: hidden;
   background: var(--track-color);
-  transition: background var(--transition-duration, .2s);
+  transition: background var(--transition-duration, 0.2s);
   user-select: none;
 }
 
@@ -37,7 +37,7 @@
 
 .bar {
   position: absolute;
-  transition: all var(--transition-duration, .2s);
+  transition: all var(--transition-duration, 0.2s);
   outline: var(--outline);
   box-shadow: var(--shadow);
   display: block;
@@ -62,7 +62,7 @@
 }
 
 .track.active {
-  background: var(--active-track-color, var(--track-color, rgba(241, 241, 241, .3)));
+  background: var(--active-track-color, var(--track-color, rgba(241, 241, 241, 0.3)));
   z-index: 1;
 }
 
