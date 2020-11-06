@@ -4,47 +4,17 @@
     <title>Test</title>
     <script src="../dist/ne14_scrollr.umd.min.js"></script>
     <style>
-      ne14-scrollr.example1 {
-        --max-width: 800px;
-        --max-height: 100px;
-      }
-
-      ne14-scrollr.example2 {
-        --max-width: 200px;
-        --max-height: 300px;
-
-        --color: rgba(255, 255, 255, .5);
-        --margin: 2px;
-        --outline: 1px #a8a8a8 solid;
-        --active-outline: none;
-        --thickness: 2px;
-        --track-color: none;
-        --active-color: #fff;
-        --active-radius: 5px;
-        --active-shadow: inset 0 0 3px rgba(0, 0, 0, .6);
-        --active-thickness: 10px;
-        --active-track-color: rgba(255, 255, 255, .3);
-      }
-
-      .content {
-        width: 2000px;
-        height: 2000px;
+      ne14-scrollr {
+        --max-width: 600px;
+        --max-height: 400px;
       }
     </style>
   </head>
   <body>
-    <ne14-scrollr class="example1">
-      <div class="content">
-        <h1>Lorem Ipsum</h1>
+    <ne14-scrollr>
+      <div class="content" style="width: 2000px; height: 2000px; background: linear-gradient(to bottom right, red, green);">
+        <h1 style="margin: 0;">Lorem Ipsum</h1>
       </div>
     </ne14-scrollr>
-
-    <div id="orig" class="content">
-      <h1>Wrap me!</h1>
-    </div>
-
-    <script>
-      window.ne_scrollr.apply('#orig', 'example2');
-    </script>
   </body>
 </html>

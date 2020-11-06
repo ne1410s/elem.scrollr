@@ -27,7 +27,7 @@ export class Scrollr extends CustomElementBase {
     if (!this._connected) {
       this._connected = true;
 
-      window.addEventListener('resize', () => this.window_resize(scrollr, trackX, trackY));
+      window.addEventListener('resize', () => this.apply_sizing(scrollr, trackX, trackY));
       scrollr.addEventListener('scroll', () => this.scrollr_scroll(scrollr, trackX, trackY));
       scrollr.addEventListener('wheel', (e: WheelEvent) => this.apply_wheel(e, scrollr, 'y'));
       trackX.addEventListener('wheel', (e: WheelEvent) => this.apply_wheel(e, scrollr, 'x'));
@@ -52,19 +52,20 @@ export class Scrollr extends CustomElementBase {
       window.addEventListener('mousemove', (e: MouseEvent) => {
         if (this._scroll) this.apply_drag(e, scrollr);
       });
-      trackX.addEventListener('mouseup', (e) => this.track_mouseup(e, scrollr));
-      trackY.addEventListener('mouseup', (e) => this.track_mouseup(e, scrollr));
+      trackX.addEventListener('mouseup', (e) => this.track_mouseup(e, scrollr, 'x'));
+      trackY.addEventListener('mouseup', (e) => this.track_mouseup(e, scrollr, 'y'));
       window.addEventListener('mouseup', () => {
         this._scroll = null;
         scrollr.querySelectorAll('.track.active').forEach((el) => el.classList.remove('active'));
       });
     }
 
-    setTimeout(() => this.window_resize(scrollr, trackX, trackY));
+    setTimeout(() => this.apply_sizing(scrollr, trackX, trackY));
   }
 
-  private track_mouseup(e: Event, scrollr: Element) {
-    const retainActive = this._scroll?.ref == scrollr;
+  private track_mouseup(e: Event, scrollr: Element, axis: 'x' | 'y') {
+    const retainActive = this._scroll == null
+       || (this._scroll.axis == axis && this._scroll.ref == scrollr);
     this._scroll = null;
     if (retainActive) {
       e.stopImmediatePropagation();
@@ -102,8 +103,8 @@ export class Scrollr extends CustomElementBase {
 
     const pX = sX / (scrollr.scrollWidth - scrollr.clientWidth);
     const pY = sY / (scrollr.scrollHeight - scrollr.clientHeight);
-    const xAbs = pX * (scrollr.clientWidth - this._x.clientWidth);
-    const yAbs = pY * (scrollr.clientHeight - this._y.clientHeight);
+    const xAbs = pX * (trackX.clientWidth - this._x.clientWidth);
+    const yAbs = pY * (trackY.clientHeight - this._y.clientHeight);
     this._x.style.left = xAbs + 'px';
     this._y.style.top = yAbs + 'px';
   }
@@ -112,10 +113,11 @@ export class Scrollr extends CustomElementBase {
     e.preventDefault();
     const axis = this._scroll.axis;
     const bar = axis == 'x' ? this._x : this._y;
+    const track: any = bar.closest('.track');
     const lengthProp = this.axisPropName(axis, 'client', 'WH');
     const total = this.axisProp(scrollr, axis, 'scroll', 'WH');
-    const max = total - scrollr[lengthProp];
-    const room = scrollr[lengthProp] - (bar as any)[lengthProp];
+    const max = total - track[lengthProp];
+    const room = track[lengthProp] - (bar as any)[lengthProp];
     const delta = this.axisProp(e, axis, 'page', 'XY') - this._scroll.page;
     const abs = this._scroll.barOffset + delta;
     const offsetProp = this.axisPropName(axis, 'scroll', 'LT');
@@ -130,7 +132,7 @@ export class Scrollr extends CustomElementBase {
     if (scrollr[sPropName] !== s0) e.preventDefault();
   }
 
-  private window_resize(scrollr: Element, trackX: HTMLElement, trackY: HTMLElement): void {
+  private apply_sizing(scrollr: Element, trackX: HTMLElement, trackY: HTMLElement): void {
     const rX = scrollr.clientWidth / scrollr.scrollWidth;
     const rY = scrollr.clientHeight / scrollr.scrollHeight;
     trackX.classList.toggle('hide', rX >= 1);
