@@ -1,9 +1,9 @@
-export function apply(q: string | Element, className: string): void {
+export function apply(selector: string | Element, newClass: string): void {
   const wrapper = document.createElement('ne14-scrollr');
-  const elemLike = typeof (q as Element).append === 'function';
-  const target = elemLike ? (q as Element) : document.querySelector(q + '');
+  const elemLike = typeof (selector as Element).append === 'function';
+  const target = elemLike ? (selector as Element) : document.querySelector(selector + '');
 
-  wrapper.className = className;
+  wrapper.className = newClass;
   target.parentElement.append(wrapper);
   wrapper.append(target);
 }

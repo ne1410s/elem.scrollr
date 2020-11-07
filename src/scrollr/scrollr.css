@@ -42,7 +42,7 @@
   box-shadow: var(--shadow);
   display: block;
   background: var(--color, rgb(193, 193, 193));
-  border-radius: var(--radius, 0);
+  border-radius: var(--radius);
 }
 
 .track.x .bar {
@@ -50,7 +50,7 @@
   min-width: var(--min-length, 30px);
   height: var(--thickness, 3px);
   bottom: var(--margin, 2px);
-  cursor: var(--x-cursor, --cursor);
+  cursor: var(--cursor-x, --cursor);
 }
 
 .track.y .bar {
@@ -58,7 +58,7 @@
   min-height: var(--min-length, 30px);
   width: var(--thickness, 3px);
   right: var(--margin, 2px);
-  cursor: var(--y-cursor, --cursor);
+  cursor: var(--cursor-y, --cursor);
 }
 
 .track.active {
@@ -68,7 +68,7 @@
 
 .track.active .bar {
   background: var(--active-color, var(--color, rgb(168, 168, 168)));
-  border-radius: var(--active-radius, var(--radius, 0));
+  border-radius: var(--active-radius, --radius);
   box-shadow: var(--active-shadow, --shadow);
   outline: var(--active-outline, --outline);
 }
