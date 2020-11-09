@@ -50,7 +50,7 @@
   min-width: var(--min-length, 30px);
   height: var(--thickness, 3px);
   bottom: var(--margin, 2px);
-  cursor: var(--cursor-x, --cursor);
+  cursor: var(--cursor-x, var(--cursor));
 }
 
 .track.y .bar {
@@ -58,7 +58,7 @@
   min-height: var(--min-length, 30px);
   width: var(--thickness, 3px);
   right: var(--margin, 2px);
-  cursor: var(--cursor-y, --cursor);
+  cursor: var(--cursor-y, var(--cursor));
 }
 
 .track.active {
@@ -68,9 +68,9 @@
 
 .track.active .bar {
   background: var(--active-color, var(--color, rgb(168, 168, 168)));
-  border-radius: var(--active-radius, --radius);
-  box-shadow: var(--active-shadow, --shadow);
-  outline: var(--active-outline, --outline);
+  border-radius: var(--active-radius, var(--radius));
+  box-shadow: var(--active-shadow, var(--shadow));
+  outline: var(--active-outline, var(--outline));
 }
 
 .track.x.active .bar {
