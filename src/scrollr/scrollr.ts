@@ -1,4 +1,4 @@
-import { CustomElementBase } from '@ne1410s/cust-elems';
+import { CustomElementBase, decode, reduceCss, reduceHtml } from '@ne1410s/cust-elems';
 
 import markupUrl from './scrollr.html';
 import stylesUrl from './scrollr.css';
@@ -6,6 +6,9 @@ import { ScrollData } from '../models/scroll-data';
 import { timer } from './scrollr-static';
 
 export class Scrollr extends CustomElementBase {
+  private static readonly Css = reduceCss(decode(stylesUrl));
+  private static readonly Html = reduceHtml(decode(markupUrl));
+
   private readonly _x: HTMLElement;
   private readonly _y: HTMLElement;
 
@@ -14,7 +17,7 @@ export class Scrollr extends CustomElementBase {
   private _connected: boolean;
 
   constructor() {
-    super(stylesUrl, markupUrl);
+    super(Scrollr.Css, Scrollr.Html);
     this._x = this.root.querySelector('.track.x .bar');
     this._y = this.root.querySelector('.track.y .bar');
   }
