@@ -1,6 +1,6 @@
 {
   "name": "@ne1410s/scrollr",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A scroll viewer.",
   "main": "dist/ne14_scrollr.cjs.min.js",
   "module": "dist/ne14_scrollr.esm.min.js",
